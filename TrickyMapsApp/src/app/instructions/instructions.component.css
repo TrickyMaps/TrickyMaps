@@ -36,6 +36,9 @@ img{
     height: auto;
     width: 80%;
     max-width: 730px;
+    border-style: solid;
+    border-radius: 1px;
+    border-color: gray;
 }
 
 body, html{
