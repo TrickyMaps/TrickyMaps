@@ -1,0 +1,148 @@
+/*input[type="range"]{
+	width: 200px;
+    margin-top: 10px;
+}*/
+
+.fixed-top{
+    top: 3%;
+    position: fixed;
+    width: 30%;
+    margin: auto;
+    background-color: white;
+}
+
+.fixed-bottom{
+    position: fixed;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+h2{
+    font-size: 18px; 
+    padding-left: 10px;
+}
+
+input[type=radio]{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.btn{
+    width: 15%;
+    font-size: 20px;
+    margin: 0 40px 0 40px;
+    margin-right: 40px;
+}
+
+.btn-danger{
+    margin-left: 40px;
+}
+
+.btn-success{
+    margin-right: 40px;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+output{
+    font-size: 24px;
+}
+
+@media (max-width: 768px){
+    .fixed-top{
+        width: 75%;
+    }
+    .btn{
+        width: 35%;
+    }
+    input[type=radio]{
+        height: 1.3em;
+        width: 1.3em;
+    }
+}
+
+@media (min-height: 850px){
+    .fixed-top{
+        font-size: 25px;
+        width: 50%;
+    }
+    label,select,input{
+        font-size: 35px
+    }
+    .btn{
+        min-height: 80px;
+        font-size: 35px;
+    }
+    input[type=radio]{
+        height: 1.3em;
+        width: 1.3em;
+    }
+}
+
+.cb-slideshow li:nth-child(1) span { 
+    background-image: url('../../assets/route.jpg');
+}
+.cb-slideshow li:nth-child(2) span { 
+    background-image: url('../../assets/route1.png');
+}
+.cb-slideshow li:nth-child(3) span { 
+    background-image: url('../../assets/route2.jpg');
+    display: none;
+}
+.cb-slideshow li:nth-child(4) span { 
+    background-image: url('../../assets/route5.jpg'); 
+}
+
+ul{
+    list-style-type: none;
+}
+
+@media(min-height: 1000px) and (min-width: 700px){ /*ipad*/
+    .fixed-top{
+        width: 100%;
+    }
+    input[type=radio]{
+        height: 1.2em;
+        width: 1.2em;
+    }
+    label, h2, output{
+        font-size: 35px;
+    }
+}
+
+@media(min-height: 1000px) and (min-width: 1000px){ /*ipad x */
+    .fixed-top{
+        width: 100%;
+    }
+    .btn{
+        min-height: 150px;
+        font-size: 45px;
+        width: 30%;
+    }
+    input[type=radio]{
+        height: 1.5em;
+        width: 1.5em;
+    }
+    output{
+        font-size: 40px;
+    }
+}
+
+.mySlides {
+    display:none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: none;
+}
+
+#fader{
+    width: 60%;
+}

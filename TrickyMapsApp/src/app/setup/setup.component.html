@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+  
+  <div>
+    <img class="mySlides" src="../../assets/route.jpg">
+    <img class="mySlides" src="../../assets/route1.png" style="width:100%">
+    <img class="mySlides" src="../../assets/route2.jpg" style="width:100%">
+    <img class="mySlides" src="../../assets/route5.jpg" style="width:100%">
+  </div> 
+      
+  
+    <form id="whole" (ngSubmit)="onSubmit()" #f="ngForm">
+      
+      <div class="fixed-top" id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+          <div class="form-group">
+            <div class="input-group-append">
+              <label class="input-group-text">Mile Radius:</label>
+            </div>
+            <input required ngModel name="mileRadius" type="number" id="mileRadius" class="form-control" value="42">
+          </div>
+
+          <div class="form-group">
+            <div class="input-group-append">
+              <label class="input-group-text">Video Frames per second</label>
+            </div>
+            <div class="range">
+              <input type="range" min="12" max="24" value="16" id="fader" 
+	              step="1" oninput="outputUpdate(value)" list="volsettings">
+                <datalist id="volsettings">
+                  <option>12</option>
+                  <option>16</option>
+                  <option>20</option>
+                  <option>24</option>
+                </datalist>
+              <output for="fader" id="volume" style="padding-left: 15px">16</output>
+              <output style="padding-left: 4px;">FPS</output>
+            </div>
+          </div>
+
+            
+
+      <h2 id="coordinates"></h2>
+      </div>
+
+      <div class="fixed-bottom">
+        <button class="btn btn-danger" type="button" (click)="HomePage()">Back to Home</button>
+        <button class="btn btn-success" type="submit" [disabled]="!f.valid">Get Tricky</button> 
+      </div>
+    </form>
+
+  
+     
+</body>
+</html>

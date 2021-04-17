@@ -1,0 +1,95 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 2px solid white;
+    margin: 75px 30px 0 30px;
+    height: 60vh;
+}  
+
+.fixed-bottom{
+    position: fixed;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+#generatedRoute{
+    background-image: url("../../assets/streetviewexamplepic.png");
+    background-repeat: none;
+    background-size: cover;
+}
+
+.btn{
+    width: 15%;
+    font-size: 20px;
+    margin-right: 35px;
+    margin-left: 35px;
+}
+
+.exit{
+    margin-left: 10px;
+    margin-top: 10px;
+    color: white;
+    background-color: black;
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+
+/*
+.full{
+    width: 100vw;
+    height: 100vh;
+}*/
+
+/*Pixel 2/XL, Iphone 6/7/8/+, Iphone X, Surface duo*/
+@media(max-width: 767px){
+    .flex-container {
+        display: block;
+    }
+    .flex-child {
+        height: 30vh;
+        margin-bottom: 15px;
+    }  
+    .btn{
+        width: 25%;
+    }
+}
+
+/*Moto G4, Galaxy S5, Iphone 5, Galaxy Fold*/
+@media(max-width: 360px){
+    .flex-container {
+        display: block;
+    }
+    .flex-child {
+        height: 26vh;
+        margin-bottom: 15px;
+    }  
+}
+
+/*Both Ipads*/
+@media(min-height: 1000px){
+    .flex-container {
+        display: block;
+    }
+
+    .btn{
+        width: 35%;
+        height: 75px;
+        font-size: 35px;
+    }
+    .flex-child {
+        height: 35vh;
+        margin-bottom: 15px;
+    }  
+}
+
+#wholeBackground{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    background:black;
+}
