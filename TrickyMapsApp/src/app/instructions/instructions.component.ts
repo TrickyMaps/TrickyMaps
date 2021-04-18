@@ -21,7 +21,6 @@ export class InstructionsComponent implements OnInit {
 
   HomePage(){
     this.router.navigate(['/home']);
-    console.log("click");
   }
 
 }

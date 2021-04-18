@@ -22,7 +22,7 @@
               </div>
           </div>
           <div class="fixed-bottom">
-            <button class="btn btn-success" (click)="scorePage()">Submit Guess</button>
+            <button class="btn btn-success" (click)="scorePage()" [disabled]="!guessMade">Submit Guess</button>
           </div>
       </div>
       

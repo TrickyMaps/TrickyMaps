@@ -39,6 +39,7 @@ export class SetupComponent implements OnInit {
     var split2 = split.toString().split("Latitude: ") //make it a string to use split method, then remove latitude
     var split3 = split2.toString().split("Longitude: "); //remove Long
     var split4 = split3.toString().split(","); //remove comma inbetween two words
+    console.log("split4 = " + split4);
     var latitude = Number(split4[1].toString()); //latitude number is left -> convert to number
     var longitude = Number(split4[3].toString()); //longitude number is left -> convert to number
 

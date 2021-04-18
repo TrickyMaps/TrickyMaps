@@ -39,12 +39,6 @@
     left: 0;
 }
 
-/*
-.full{
-    width: 100vw;
-    height: 100vh;
-}*/
-
 /*Pixel 2/XL, Iphone 6/7/8/+, Iphone X, Surface duo*/
 @media(max-width: 767px){
     .flex-container {

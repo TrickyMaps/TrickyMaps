@@ -19,7 +19,10 @@ export class GameplayComponent implements OnInit {
   //variables store data from previous screen
   latitude: number;
   longitude: number; 
+  guessMade: boolean = false;
 
+  guessLat: number;
+  guessLng: number;
 
   ngOnInit(): void {
     this.initMap();  
@@ -51,8 +54,6 @@ export class GameplayComponent implements OnInit {
         
       });
     })
-  
-    
   }
   
   placeMarkerAndPanTo(latLng: google.maps.LatLng, map: google.maps.Map): boolean {
@@ -61,16 +62,29 @@ export class GameplayComponent implements OnInit {
           position: latLng,
           map: map,
           title: "Your Guess",
+          icon: {                             
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"                          
+          }
         });
         map.panTo(latLng);
         console.log("latLng of guess = " + latLng);
+        
+        var latLngStr = latLng.toString();
+        var split = latLngStr.toString().split("(");
+        var split2 = split.toString().split(")");
+        var split3 = split2.toString().split(",");
+        //console.log("lat = " + Number(split3[1].toString()));
+        //console.log("long = " + Number(split3[2].toString()));
+        this.guessLat = Number(split3[1].toString()); //players guess lat
+        this.guessLng = Number(split3[2].toString()); //players guess lng
+
+        this.guessMade = true;
         return true;
       } else {
         console.log("guess nullified");
         return false;
       }
   }
-  
 
   exitGame(){ //x button in top left
     if (confirm('Are you sure you want to leave the game?')) {
@@ -97,6 +111,9 @@ export class GameplayComponent implements OnInit {
       position: {lat: this.latitude, lng: this.longitude},
       map: map,
       title: "Your Location",
+      icon:{
+        url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+      }
     })
   }
 
