@@ -79,6 +79,10 @@
         height: 35vh;
         margin-bottom: 15px;
     }  
+    .exit{
+        font-size: 20px;
+    }
+    
 }
 
 #wholeBackground{

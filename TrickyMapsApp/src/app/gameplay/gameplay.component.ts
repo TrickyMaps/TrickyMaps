@@ -20,6 +20,7 @@ export class GameplayComponent implements OnInit {
   latitude: number;
   longitude: number; 
   guessMade: boolean = false;
+  gmarkers = [];
 
   guessLat: number;
   guessLng: number;
@@ -46,44 +47,56 @@ export class GameplayComponent implements OnInit {
       this.yourLocation(theMap);
 
       theMap.addListener("click", (e) => {
-        if(madeGuess == false){
-          madeGuess = this.placeMarkerAndPanTo(e.latLng, theMap);
-        } else {
-          alert('Already made your guess! Click "See Score" to proceed!');
-        }
-        
+        this.placeMarkerAndPanTo(e.latLng, theMap);
       });
     })
   }
   
-  placeMarkerAndPanTo(latLng: google.maps.LatLng, map: google.maps.Map): boolean {
-      if (confirm('Do you want this to be your guess? You only get one so make it count!')) {
-        new google.maps.Marker({
+  placeMarkerAndPanTo(latLng: google.maps.LatLng, map: google.maps.Map){
+
+      console.log("array length (before remove method)= " + this.gmarkers.length);
+      //if user made a guess when they already made one, remove original guess from the map
+      if (this.gmarkers.length > 0) {
+        this.removeMarker(); 
+      }
+
+      console.log(this.gmarkers.length);
+
+      console.log("array length (after remove method)= " + this.gmarkers.length);
+        
+      var userGuess = new google.maps.Marker({
           position: latLng,
           map: map,
           title: "Your Guess",
           icon: {                             
             url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"                          
           }
-        });
-        map.panTo(latLng);
-        console.log("latLng of guess = " + latLng);
-        
-        var latLngStr = latLng.toString();
-        var split = latLngStr.toString().split("(");
-        var split2 = split.toString().split(")");
-        var split3 = split2.toString().split(",");
-        //console.log("lat = " + Number(split3[1].toString()));
-        //console.log("long = " + Number(split3[2].toString()));
-        this.guessLat = Number(split3[1].toString()); //players guess lat
-        this.guessLng = Number(split3[2].toString()); //players guess lng
+      });
 
+      this.gmarkers.push(userGuess); //add guess to array
+      console.log("array length (after push)= " + this.gmarkers.length);
+      
+      map.panTo(latLng);
+      console.log("latLng of guess = " + latLng);
+        
+      var latLngStr = latLng.toString();
+      var split = latLngStr.toString().split("(");
+      var split2 = split.toString().split(")");
+      var split3 = split2.toString().split(",");
+      //console.log("lat = " + Number(split3[1].toString()));
+      //console.log("long = " + Number(split3[2].toString()));
+      this.guessLat = Number(split3[1].toString()); //players guess lat
+      this.guessLng = Number(split3[2].toString()); //players guess lng
+
+      if(this.guessMade == false){
         this.guessMade = true;
-        return true;
-      } else {
-        console.log("guess nullified");
-        return false;
       }
+      
+  }
+
+  removeMarker(){
+    this.gmarkers[0].setMap(null); //removing guess from map
+    this.gmarkers.shift(); //remove first and only element from array
   }
 
   exitGame(){ //x button in top left
@@ -118,7 +131,12 @@ export class GameplayComponent implements OnInit {
   }
 
   scorePage(){
-    this.router.navigate(['/score']);
+    if(confirm("Are you sure you want to proceed to the scoring page? Your guess will be finalized")){
+      this.router.navigate(['/score']);
+    } else {
+      console.log("stay put");
+    }
+    
   }
 
 }

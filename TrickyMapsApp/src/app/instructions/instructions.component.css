@@ -59,6 +59,10 @@ body, html{
     h1{
         font-size: 40px;
     }
+    .exit{
+        margin-left: 4px;
+        margin-top: 4px;
+    }
 }
 
 @media(min-height: 400px) and (min-width: 800px){ /*computer screen*/
@@ -72,12 +76,27 @@ body, html{
         font-size: 30px;
         margin-bottom: 35px;
     }
+    .exit{
+        margin-left: 1px;
+        margin-top: 1px;
+    }
+}
+
+@media(max-width: 376px){ /*Galaxy, Moto G4, iPhone 5,6,7*/
+    .exit{
+        margin-left: 1px;
+        margin-top: 1px;
+    }
 }
 
 @media(min-width: 375px) and (min-height: 812px){ /* Iphone X*/
     h1{
         font-size: 42px;
         margin-bottom: 75px;
+    }
+    .exit{
+        margin-left: 4px;
+        margin-top: 4px;
     }
 }
 
@@ -97,6 +116,9 @@ body, html{
     h1{
         font-size: 68px;
         margin-bottom: 100px;
+    }
+    button{
+        font-size: 20px;
     }
 }
 
