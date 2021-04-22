@@ -27,12 +27,14 @@ export class SetupComponent implements OnInit {
   info: any = {
     "dist": null,
     "lat": null,
-    "lon": null
+    "lon": null,
+    "fps": null
   };
   
 
   onSubmit() {
     this.info.dist = this.signupForm.value.userData.mileRadius;
+    console.log(this.info.fps = this.signupForm.value.userData.FPS);
 
     var str = document.getElementsByTagName("h2")[0].innerHTML.toString(); //h2 element contains lat and long 
     var split = str.split("<br>"); //removing <br> 

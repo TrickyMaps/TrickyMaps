@@ -38,6 +38,18 @@ export class GameplayComponent implements OnInit {
     this.longitude = this.sendLatLong.getLongitude();
     console.log(this.longitude);
 
+
+    /* So the javascript file api.js with the 
+          method getKey() is not on github. In order for this to work:
+      1: create a new javascript file named 'api.js' 
+      2: put it in the js folder in assets
+      3: in that method, write:
+        function getKey(){
+          return ________; <- this is where the api key goes (put it in single quotation marks)
+        } 
+      ****api.js is included in the .gitignore file, this is why these steps are important*/
+
+
     let loader = new Loader({
       apiKey: `${getKey()}` //indirectly getting key (hiding it)
     })
