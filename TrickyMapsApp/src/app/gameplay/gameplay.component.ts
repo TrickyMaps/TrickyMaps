@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Loader } from '@googlemaps/js-api-loader';
 import { SendLatLongService } from '../send-lat-long.service';
-
+import { SendJsonDataService } from '../send-json-data.service';
 
 declare const getKey;
 
@@ -14,11 +14,14 @@ declare const getKey;
 
 export class GameplayComponent implements OnInit {
 
-  constructor(private router: Router, private sendLatLong: SendLatLongService) { }
+  constructor(private router: Router, private sendLatLong: SendLatLongService,
+    private sendJson: SendJsonDataService) { }
 
   //variables store data from previous screen
   latitude: number;
   longitude: number; 
+  responseJson: any;
+
   guessMade: boolean = false;
   gmarkers = [];
 
@@ -26,11 +29,18 @@ export class GameplayComponent implements OnInit {
   guessLng: number;
 
   ngOnInit(): void {
+    /*
+    while(!this.sendJson.getData()){
+      return console.log("Wait in while loop");
+    }
+    console.log("Done with while loop")*/
     this.initMap();  
   }
 
   initMap(){
     var madeGuess = false;
+    this.responseJson = this.sendJson.getData();
+    console.log(this.responseJson);
 
     //retrieve lat and long from setup page (used as coordinates in map in right box)
     this.latitude = this.sendLatLong.getLatitude();

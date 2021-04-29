@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, RouterEvent, Event } from '@angular/router';
 import { SendLatLongService } from '../send-lat-long.service';
+import { SendJsonDataService } from '../send-json-data.service';
 
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import { delay } from 'rxjs/operators';
+
 
 declare function getLocation();
 declare function carousel();
@@ -18,10 +21,34 @@ declare const outputUpdate: any;
 })
 export class SetupComponent implements OnInit {
 
+  showLoadingIndicator = true;
   constructor(private router: Router, private http: HttpClient,
-    private sendLatLong: SendLatLongService) {
-
+    private sendLatLong: SendLatLongService,
+    private sendJson: SendJsonDataService) {
+      this.router.events.subscribe((RouterEvent: Event) =>{
+        if(RouterEvent instanceof NavigationStart){
+          this.showLoadingIndicator = true;
+        }
+        if (RouterEvent instanceof NavigationEnd){
+          this.showLoadingIndicator = false;
+        }
+      });
   }
+  /*
+  private testFunc = async (url: string, info): Promise<any> => {
+    var responseData;
+    await axios.post(url, info).then((response) => {responseData = response['data']})
+
+    return responseData
+  };*/
+
+  async testFunc(url: string, info: Object){
+    var responseData = await axios
+      .post(url, info).then((response) => {responseData = response['data']}).catch(delay(1000));
+    
+      return responseData;
+  }
+
   @ViewChild('f', { static: false }) signupForm: NgForm;
 
   info: any = {
@@ -34,7 +61,7 @@ export class SetupComponent implements OnInit {
 
   onSubmit() {
     this.info.dist = this.signupForm.value.userData.mileRadius;
-    console.log(this.info.fps = this.signupForm.value.userData.FPS);
+    this.info.fps = this.signupForm.value.userData.FPS;
 
     var str = document.getElementsByTagName("h2")[0].innerHTML.toString(); //h2 element contains lat and long 
     var split = str.split("<br>"); //removing <br> 
@@ -54,10 +81,17 @@ export class SetupComponent implements OnInit {
 
     console.log(typeof(this.info)); //object -> json
     console.log(typeof(JSON.stringify(this.info))); //string
-    const Url ='http://10.103.114.67:5000/api/get_location_from_point';
+    const Url ='http://10.103.114.147:5000/api/get_video';
+    //.catch(err=>console.log(err)
+    var responseData;
+
     
-    axios.post(Url, this.info).then(data=>console.log(data)).catch(err=>console.log(err));
+    responseData = this.testFunc(Url, this.info)
+    this.sendJson.setData(responseData);
+    console.log("THIS");
+    console.log(responseData);
     this.GamePage();
+
   }
 
   ngOnInit(): void {
@@ -79,7 +113,17 @@ export class SetupComponent implements OnInit {
   }
 
   GamePage(){
+    /*
+    setTimeout(() =>{
+      console.log("this.showingindicator" + this.showLoadingIndicator);
+      this.router.navigate(['/game']); //where game begins
+    }, 5000);*/
+    console.log("this.showingindicator " + this.showLoadingIndicator); //false
     this.router.navigate(['/game']); //where game begins
+    console.log("this.showingindicator " + this.showLoadingIndicator); //true
   }
+
+
+
 
 }
