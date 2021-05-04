@@ -1,0 +1,78 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 2px solid white;
+    margin: 20px 120px 0 120px;
+    height: 60vh;
+}  
+
+.fixed-bottom{
+    position: fixed;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    max-width:100%;
+    max-height:100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn{
+    width: 15%;
+    font-size: 20px;
+    margin-right: 35px;
+    margin-left: 35px;
+}
+
+#wholeBackground{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    background:black;
+}
+
+h2{
+    color:white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/*Pixel 2/XL, Iphone 6/7/8/+, Iphone X, Surface duo*/
+@media(max-width: 767px){
+    .flex-child {
+        margin: 20px 20px 0 20px;
+    }  
+    .btn{
+        width: 25%;
+    }
+}
+
+/*Moto G4, Galaxy S5, Iphone 5, Galaxy Fold*/
+@media(max-width: 360px){
+    .flex-child {
+        height: 50vh;
+        margin-bottom: 15px;
+        font-size: 10px;
+    }  
+
+}
+
+/*Both Ipads*/
+@media(min-height: 1000px){
+    .btn{
+        width: 35%;
+        height: 75px;
+        font-size: 35px;
+    }
+    h2{
+        margin-top: 70px;
+        font-size: 47px;
+    }  
+}

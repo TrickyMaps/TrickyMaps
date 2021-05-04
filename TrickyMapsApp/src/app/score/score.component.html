@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+    <body>
+      <div id="wholeBackground">
+          <div class="flex-container">
+              <div class="flex-child magenta">
+                  <img src="../../assets/gameover.jpg">
+              </div>
+          </div>
+          <h2>Your Score is {{outputScore}}</h2>
+          <h2>You were off by {{outputFeet}} feet</h2>
+
+          <div class="fixed-bottom">
+            <button class="btn btn-success" (click)="HomePage()">Back to Home</button>
+          </div>
+      </div>
+      
+    </body>
+</html>

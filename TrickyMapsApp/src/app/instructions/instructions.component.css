@@ -1,0 +1,126 @@
+h1{
+    font-size: 28px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+a{
+    height: 40%;
+    margin: auto;
+}
+
+.carousel-caption d-md-block{
+    width: 80%;
+}
+
+.exit{
+    margin-left: 10px;
+    margin-top: 10px;
+    color: white;
+    background-color: black;
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+
+.carousel-control-prev, .carousel-control-next{
+    opacity: unset;
+    fill:black;
+}
+
+.carousel-item{
+    height: 100vh;
+}
+img{
+    margin: auto;
+    height: auto;
+    width: 80%;
+    max-width: 730px;
+    border-style: solid;
+    border-radius: 1px;
+    border-color: gray;
+}
+
+body, html{
+    background-color: black;
+}
+
+@media(min-width: 767px){
+    h1{
+        font-size: 35px;
+    }
+    img{
+        width: 86%;
+        height: auto;
+    }
+}
+
+@media(min-width: 411px){ /*pixel 2*/
+    h1{
+        font-size: 40px;
+    }
+    .exit{
+        margin-left: 4px;
+        margin-top: 4px;
+    }
+}
+
+@media(min-height: 400px) and (min-width: 800px){ /*computer screen*/
+    h1{
+        font-size: 24px;
+    }
+}
+
+@media(max-width: 320px){ /*iphone 5*/
+    h1{
+        font-size: 30px;
+        margin-bottom: 35px;
+    }
+    .exit{
+        margin-left: 1px;
+        margin-top: 1px;
+    }
+}
+
+@media(max-width: 376px){ /*Galaxy, Moto G4, iPhone 5,6,7*/
+    .exit{
+        margin-left: 1px;
+        margin-top: 1px;
+    }
+}
+
+@media(min-width: 375px) and (min-height: 812px){ /* Iphone X*/
+    h1{
+        font-size: 42px;
+        margin-bottom: 75px;
+    }
+    .exit{
+        margin-left: 4px;
+        margin-top: 4px;
+    }
+}
+
+@media(min-height: 1000px) and (min-width: 700px){ /*ipad*/
+    h1{
+        font-size: 57px;
+        margin-bottom: 70px;
+    }
+}
+
+@media(min-height: 1000px) and (min-width: 1000px){ /*ipad x */
+    img{
+        width: 100%;
+        height: auto;
+        max-width: 950px;
+    }
+    h1{
+        font-size: 68px;
+        margin-bottom: 100px;
+    }
+    button{
+        font-size: 20px;
+    }
+}
+
+
+

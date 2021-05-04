@@ -1,0 +1,239 @@
+.fixed-top{
+    top: 3%;
+    position: fixed;
+    width: 30%;
+    margin: auto;
+    background-color: white;
+}
+
+.fixed-bottom{
+    position: fixed;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+h2{
+    font-size: 18px; 
+    padding-left: 10px;
+}
+
+input[type=radio]{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.btn{
+    width: 15%;
+    font-size: 20px;
+    margin: 0 40px 0 40px;
+    margin-right: 40px;
+}
+
+.btn-danger{
+    margin-left: 40px;
+}
+
+.btn-success{
+    margin-right: 40px;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+output{
+    font-size: 24px;
+}
+
+.cb-slideshow li:nth-child(1) span { 
+    background-image: url('../../assets/route.jpg');
+}
+.cb-slideshow li:nth-child(2) span { 
+    background-image: url('../../assets/route1.png');
+}
+.cb-slideshow li:nth-child(3) span { 
+    background-image: url('../../assets/route2.jpg');
+    display: none;
+}
+.cb-slideshow li:nth-child(4) span { 
+    background-image: url('../../assets/route5.jpg'); 
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+/*Spinner CSS*/
+
+.lds-roller {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 50%;
+  }
+  .lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: black;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+@media(min-height: 1000px) and (min-width: 700px){ /*ipad*/
+    .fixed-top{
+        width: 100%;
+    }
+    input[type=radio]{
+        height: 1.2em;
+        width: 1.2em;
+    }
+    label, h2, output{
+        font-size: 35px;
+    }
+    .lds-roller {
+        left: 45%;
+    }
+}
+
+@media(min-height: 1000px) and (min-width: 1000px){ /*ipad x */
+    .fixed-top{
+        width: 100%;
+    }
+    .btn{
+        min-height: 150px;
+        font-size: 45px;
+        width: 30%;
+    }
+    input[type=radio]{
+        height: 1.5em;
+        width: 1.5em;
+    }
+    output{
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px){
+    .lds-roller {
+        left: 40%;
+    }
+    .fixed-top{
+        width: 75%;
+    }
+    .btn{
+        width: 35%;
+    }
+    input[type=radio]{
+        height: 1.3em;
+        width: 1.3em;
+    }
+}
+
+@media (min-height: 850px){
+    .fixed-top{
+        font-size: 25px;
+        width: 50%;
+    }
+    label,select,input{
+        font-size: 35px
+    }
+    .btn{
+        min-height: 80px;
+        font-size: 35px;
+    }
+    input[type=radio]{
+        height: 1.3em;
+        width: 1.3em;
+    }
+}
+
+.mySlides {
+    display:none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: none;
+}
+
+#fader{
+    width: 60%;
+}
+

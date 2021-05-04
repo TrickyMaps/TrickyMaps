@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+    <body>
+      <div id="wholeBackground">
+        <button type="button" class="exit" (click)="exitGame()">
+          X
+        </button>
+
+        <video autoplay loop playsinline style="display: none;">
+          <source src="../../assets/copyrightfreemusic.mp4">
+        </video>
+
+          <div class="flex-container">
+              <div class="flex-child magenta" id="generatedRoute">
+                <video src="" id="responseVideo" autoplay playsinline>
+                </video>
+              </div>
+              
+              <div class="flex-child green" id="map">
+                google map
+              </div>
+          </div>
+          <div class="fixed-bottom">
+            <button class="btn btn-success" (click)="scorePage()" [disabled]="!guessMade">Submit Guess</button>
+          </div>
+      </div>
+      
+    </body>
+</html>
