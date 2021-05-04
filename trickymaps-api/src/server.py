@@ -141,8 +141,9 @@ def make_server() -> Flask:
             )
         start = locations['start_location_name']
         end = locations['destination_location_name']
+        address_string = start + end
 
-        filename_hash = encode_filename(end)
+        filename_hash = encode_filename(address_string, obj_start['fps'])
         file_path = "../static/final_" + filename_hash + ".mov"
 
         if (path.exists(file_path)):
