@@ -9,7 +9,6 @@ from calculations import calculate_initial_compass_bearing, calculate_pitch
 import cv2
 import threading
 import subprocess
-import ffmpeg
 import time
 
 #this needs to be removed and moved to config.json (do not push this to github)

@@ -2,7 +2,7 @@ import hashlib
 import subprocess, os
 
 def encode_filename(address, fps):
-    result = hashlib.md5(start_address.encode())
+    result = hashlib.md5(address.encode())
   
     # printing the equivalent hexadecimal value.
     print("The hexadecimal equivalent of hash is : ", end ="")
