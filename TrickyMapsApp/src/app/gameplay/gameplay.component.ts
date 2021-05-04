@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Loader } from '@googlemaps/js-api-loader';
 import { SendLatLongService } from '../send-lat-long.service';
 import { SendJsonDataService } from '../send-json-data.service';
+import { SendScoreService } from '../send-score.service';
 
 declare const getKey;
 
@@ -15,12 +16,19 @@ declare const getKey;
 export class GameplayComponent implements OnInit {
 
   constructor(private router: Router, private sendLatLong: SendLatLongService,
-    private sendJson: SendJsonDataService) { }
+    private sendJson: SendJsonDataService,
+    private activatedRoute: ActivatedRoute,
+    private sendScore: SendScoreService) { }
 
   //variables store data from previous screen
   latitude: number;
   longitude: number; 
   responseJson: any;
+  destinationCords: any;
+  destinationLat: any;
+  destinationLng: any;
+  fileName: any;
+
 
   guessMade: boolean = false;
   gmarkers = [];
@@ -29,11 +37,31 @@ export class GameplayComponent implements OnInit {
   guessLng: number;
 
   ngOnInit(): void {
-    /*
-    while(!this.sendJson.getData()){
-      return console.log("Wait in while loop");
-    }
-    console.log("Done with while loop")*/
+    this.sendJson.getData();
+    var video = document.getElementById('responseVideo');
+    //this.activatedRoute.data.subscribe(data => video.setAttribute('src', `http://68.14.109.119:5800/api/static_video/${data['info']['filename']}`));
+    this.activatedRoute.data.subscribe(data => this.setReturnedData(data['info']['end_cords'], data['info']['filename']));
+
+    this.destinationCords = JSON.stringify(this.getReturnedCords());
+    console.log(this.destinationCords);
+    this.destinationCords = this.destinationCords.toString().split('{"lat":');
+    this.destinationCords = this.destinationCords.toString().split('"lon":');
+    this.destinationCords = this.destinationCords.toString().split('}');
+    this.destinationCords = this.destinationCords.toString().split(',');
+    this.destinationLat = Number(this.destinationCords[1]);
+    this.destinationLng = Number(this.destinationCords[3]);
+    console.log(this.destinationCords);
+    console.log("lat end = " + this.destinationLat);
+    console.log("lng end = " + this.destinationLng);
+
+    this.fileName = JSON.stringify(this.getReturnedFile());
+    this.fileName = this.fileName.split('"'); //getting rid of " and " at front and end
+    //console.log("the file = " + this.fileName[1]);
+
+    
+    var video = document.getElementById('responseVideo');
+    video.setAttribute('src', `http://68.14.109.119:5800/api/static_video/${this.fileName[1]}`);
+
     this.initMap();  
   }
 
@@ -110,6 +138,9 @@ export class GameplayComponent implements OnInit {
       this.guessLat = Number(split3[1].toString()); //players guess lat
       this.guessLng = Number(split3[2].toString()); //players guess lng
 
+      console.log("this.guessLat:" + this.guessLat);
+      console.log("this.guessLng:" + this.guessLng);
+
       if(this.guessMade == false){
         this.guessMade = true;
       }
@@ -152,8 +183,31 @@ export class GameplayComponent implements OnInit {
     })
   }
 
+  setReturnedData(cordsData, fileData){
+    this.destinationCords = cordsData;
+    this.fileName = fileData;
+  }
+
+  getReturnedCords(){
+    return this.destinationCords;
+  }
+
+  getReturnedFile(){
+    return this.fileName;
+  }
+
   scorePage(){
     if(confirm("Are you sure you want to proceed to the scoring page? Your guess will be finalized")){
+
+      const info: any = {
+        "destination_lat": this.destinationLat,
+        "destination_lon": this.destinationLng,
+        "guess_lat": this.guessLat,
+        "guess_lon": this.guessLng
+      };
+
+      this.sendScore.setScore(info);
+
       this.router.navigate(['/score']);
     } else {
       console.log("stay put");

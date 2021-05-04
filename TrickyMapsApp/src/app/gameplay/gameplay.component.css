@@ -16,10 +16,12 @@
     justify-content: center;
 }
 
-#generatedRoute{
-    background-image: url("../../assets/streetviewexamplepic.png");
-    background-repeat: none;
-    background-size: cover;
+
+video{
+    height: 60vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn{
@@ -51,6 +53,9 @@
     .btn{
         width: 25%;
     }
+    video{
+        height: 30vh;
+    }
 }
 
 /*Moto G4, Galaxy S5, Iphone 5, Galaxy Fold*/
@@ -62,6 +67,9 @@
         height: 26vh;
         margin-bottom: 15px;
     }  
+    video{
+        height: 26vh;
+    }
 }
 
 /*Both Ipads*/
@@ -81,6 +89,9 @@
     }  
     .exit{
         font-size: 20px;
+    }
+    video{
+        height: 35vh;
     }
     
 }

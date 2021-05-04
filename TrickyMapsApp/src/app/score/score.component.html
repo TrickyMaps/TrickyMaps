@@ -7,10 +7,11 @@
       <div id="wholeBackground">
           <div class="flex-container">
               <div class="flex-child magenta">
-                  gfgdfgf
+                  <img src="../../assets/gameover.jpg">
               </div>
           </div>
-          <h1>Your Score is 89</h1>
+          <h2>Your Score is {{outputScore}}</h2>
+          <h2>You were off by {{outputFeet}} feet</h2>
 
           <div class="fixed-bottom">
             <button class="btn btn-success" (click)="HomePage()">Back to Home</button>

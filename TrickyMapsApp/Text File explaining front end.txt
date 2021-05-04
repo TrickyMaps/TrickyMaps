@@ -5,6 +5,10 @@ Breakdown of TrickyMaps front end:
 - built using bootstrap 4.6
 - IDE: visual studio code
 
+- how to test application: https://www.youtube.com/watch?v=3yACsnV30N8&t=186s (follow this youtube video)
+	- doenst work on regular chrome because of CORS policy, so you have to run chrome with it disabled
+	- dont use this chrome to look up anything else (just use it for localhost:4200)
+
 - how to check angular version: ng version 
 
 Angular CLI: 11.1.4
