@@ -51,6 +51,8 @@ def get_route(lat1: float, lon1: float, lat2: float, lon2:float):
     # add support for when it returns null becuase of invalid location
     result = gmaps.directions(start, end)
     if result == 0:
+        # The cheaty exception raise that is mentioned in server.py
+        # if the route is not routable it will return a 0 and so we raise that as an exception here
         raise Exception
     else:
         obj = {"directions": result}

@@ -5,16 +5,11 @@ name = "pypi"
 
 [packages]
 flask = "*"
-numpy = "*"
-matplotlib = "*"
-haversine = "*"
 geopy = "*"
 googlemaps = "*"
-moviepy = "*"
 polyline = "*"
 flask-cors = "*"
 opencv-python = "*"
-ffmpeg-python = "*"
 
 [dev-packages]
 

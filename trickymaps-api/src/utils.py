@@ -1,14 +1,16 @@
 import hashlib
 import subprocess, os
 
-def encode_filename(start_address):
-    result = hashlib.md5(start_address.encode())
+def encode_filename(address, fps):
+    result = hashlib.md5(address.encode())
   
     # printing the equivalent hexadecimal value.
     print("The hexadecimal equivalent of hash is : ", end ="")
     print(result.hexdigest())
 
-    return result.hexdigest()
+    final_string = result.hexdigest() + "_" + fps
+
+    return final_string
 
 def reencode_video(filename):
     filepath_source = "../static/{}.mp4".format(filename)
