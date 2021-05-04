@@ -4,7 +4,7 @@ import random
 import googlemaps
 from datetime import datetime
 
-
+#this needs to be removed and moved to config.json (do not push this to github)
 gmaps = googlemaps.Client(key='REPLACE_WITH_YOUR_GCP_API_KEY')
 
 # given: lat1, lon1, bearing, distMiles

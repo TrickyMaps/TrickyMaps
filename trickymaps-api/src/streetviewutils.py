@@ -12,7 +12,7 @@ import subprocess
 import ffmpeg
 import time
 
-
+#this needs to be removed and moved to config.json (do not push this to github)
 GOOGLE_STREETVIEW_API_KEY = 'REPLACE_WITH_YOUR_GCP_API_KEY'
 
 GOOGLE_MAPS_DIRECTIONS_API = 'https://maps.googleapis.com/maps/api/directions/json?'
