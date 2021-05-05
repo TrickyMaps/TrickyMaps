@@ -91,7 +91,7 @@ h1{
     }
     .fullimage{
         position: absolute; 
-        background-image: url('../../assets/homeroute.jpg');
+        background-image: url('../../assets/homeroute.jpg'); /*If screen is too small. change to image*/
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
