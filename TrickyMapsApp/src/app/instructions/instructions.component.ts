@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-declare const sliderOptions: any;
 
 let counter = 0;
 @Component({
@@ -13,10 +12,6 @@ export class InstructionsComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-  }
-
-  slider(){
-    sliderOptions(counter);
   }
 
   HomePage(){

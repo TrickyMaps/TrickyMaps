@@ -55,14 +55,14 @@
 - the spec.ts files don't worry about (they are generated as you make a new component) i didnt code those
 - dont need to edit index.html (only update the folders with the other html pages, .ts files and .css files)
 - app.module.ts = imports of each componenet, and modules
-- send-lat-long.service.ts gets lat and long of setup page and sends that information to gameplay page (get map working)
+- send-lat-long.service.ts gets lat and long of setup page and sends that information to gameplay page (for the map to work)
 - send-json-data.service.ts gets data entered at setup page and sends that information to scoring page (gets video loaded from backend)
-
+- send-score.service.ts gets end lat/long and guess lat/long and sends that information to scoring page (need to do this because to do the 2nd api call)
 ---------------------------------------------------------------------
 
 - gameplay.component.html -> ../../assets/copyrightfreemusic.mp4 not included in repo (too big)
 	- this is youtube link: https://www.youtube.com/watch?v=Q7HjxOAU5Kc (convert to mp4)
 - homepage.componenet.html -> ../../assets/tour.mp4 not included in repo (too big)
-	- cant find original youtube link (replace with new video/change it up yourselves)
+	- cant find original youtube link (replace with new video/change it yourselves)
 	
 ---------------------------------------------------------------------

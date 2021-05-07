@@ -7,7 +7,6 @@ import { InstructionsComponent } from './instructions/instructions.component';
 import { ScoreComponent } from './score/score.component';
 import { SetupComponent } from './setup/setup.component';
 
-var sendJson: any;
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},

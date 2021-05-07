@@ -8,7 +8,7 @@ function getLocation() {
   }
 }
 
-//stored in h2 element in setup.html
+//stored in h2 element in setup.component.html
 function showPosition(position) {
     var x = document.getElementById("coordinates");
   x.innerHTML = "Latitude: " + position.coords.latitude + 
@@ -26,7 +26,7 @@ function carousel() {
   myIndex++;
   if (myIndex > x.length) {myIndex = 1}    
   x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 10000); // Change image every 10 seconds on setup.html page
+  setTimeout(carousel, 10000); // Change image every 10 seconds in setup.component.html page
 }
 
 function outputUpdate(vol) {

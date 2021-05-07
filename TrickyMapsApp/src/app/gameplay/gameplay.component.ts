@@ -37,32 +37,31 @@ export class GameplayComponent implements OnInit {
   guessLng: number;
 
   ngOnInit(): void {
-    this.sendJson.getData();
+    this.sendJson.getData(); //get data (method in send-json-data.service.ts)
     var video = document.getElementById('responseVideo');
-    //this.activatedRoute.data.subscribe(data => video.setAttribute('src', `http://68.14.109.119:5800/api/static_video/${data['info']['filename']}`));
-    this.activatedRoute.data.subscribe(data => this.setReturnedData(data['info']['end_cords'], data['info']['filename']));
 
-    this.destinationCords = JSON.stringify(this.getReturnedCords());
+    /*so this page does not load until the data is sent back (goes through the gameplay-resolver.service.ts)*/    
+    this.activatedRoute.data.subscribe(data => this.setReturnedData(data['info']['end_cords'], data['info']['filename'])); //setting data in method below
+
+    this.destinationCords = JSON.stringify(this.getReturnedCords()); //getter method to get cords
     console.log(this.destinationCords);
     this.destinationCords = this.destinationCords.toString().split('{"lat":');
     this.destinationCords = this.destinationCords.toString().split('"lon":');
     this.destinationCords = this.destinationCords.toString().split('}');
     this.destinationCords = this.destinationCords.toString().split(',');
-    this.destinationLat = Number(this.destinationCords[1]);
-    this.destinationLng = Number(this.destinationCords[3]);
+    this.destinationLat = Number(this.destinationCords[1]); //end destination lat
+    this.destinationLng = Number(this.destinationCords[3]); //end destination long
     console.log(this.destinationCords);
     console.log("lat end = " + this.destinationLat);
     console.log("lng end = " + this.destinationLng);
 
     this.fileName = JSON.stringify(this.getReturnedFile());
     this.fileName = this.fileName.split('"'); //getting rid of " and " at front and end
-    //console.log("the file = " + this.fileName[1]);
-
     
     var video = document.getElementById('responseVideo');
-    video.setAttribute('src', `http://68.14.109.119:5800/api/static_video/${this.fileName[1]}`);
+    video.setAttribute('src', `http://68.14.109.119:5800/api/static_video/${this.fileName[1]}`); //set left box to video sent back from backend
 
-    this.initMap();  
+    this.initMap();  //calls below method
   }
 
   initMap(){
@@ -92,12 +91,12 @@ export class GameplayComponent implements OnInit {
       apiKey: `${getKey()}` //indirectly getting key (hiding it)
     })
 
-    loader.load().then(() => {
+    loader.load().then(() => { /*loads google map*/
       var theMap = this.getMap();
       this.yourLocation(theMap);
 
       theMap.addListener("click", (e) => {
-        this.placeMarkerAndPanTo(e.latLng, theMap);
+        this.placeMarkerAndPanTo(e.latLng, theMap); //adding marker to map by clicking (indicating user guess)
       });
     })
   }
@@ -114,7 +113,7 @@ export class GameplayComponent implements OnInit {
 
       console.log("array length (after remove method)= " + this.gmarkers.length);
         
-      var userGuess = new google.maps.Marker({
+      var userGuess = new google.maps.Marker({ //placing guess
           position: latLng,
           map: map,
           title: "Your Guess",
@@ -141,7 +140,7 @@ export class GameplayComponent implements OnInit {
       console.log("this.guessLat:" + this.guessLat);
       console.log("this.guessLng:" + this.guessLng);
 
-      if(this.guessMade == false){
+      if(this.guessMade == false){ //will change to true after first guess
         this.guessMade = true;
       }
       
@@ -162,17 +161,17 @@ export class GameplayComponent implements OnInit {
     }
   }
 
-  getMap(){
+  getMap(){ /*creates map and centers it at your current location*/
     const map = new google.maps.Map(document.getElementById("map"), {
-      //setting lat and lng = data sent over from setuppage
-      center: {lat: this.latitude, lng: this.longitude},
+      //setting lat and lng = data sent over from setup page
+      center: {lat: this.latitude, lng: this.longitude}, 
       zoom: 14,
       streetViewControl: false
     });
     return map;
   }
 
-  yourLocation(map: any){
+  yourLocation(map: any){ /*places icon at current location on map*/
     new google.maps.Marker({
       position: {lat: this.latitude, lng: this.longitude},
       map: map,
@@ -183,7 +182,7 @@ export class GameplayComponent implements OnInit {
     })
   }
 
-  setReturnedData(cordsData, fileData){
+  setReturnedData(cordsData, fileData){ //setting up cords and filename for two get methods below
     this.destinationCords = cordsData;
     this.fileName = fileData;
   }
@@ -199,14 +198,14 @@ export class GameplayComponent implements OnInit {
   scorePage(){
     if(confirm("Are you sure you want to proceed to the scoring page? Your guess will be finalized")){
 
-      const info: any = {
+      const info: any = { //2nd api call (end lat/long and guess lat/long)
         "destination_lat": this.destinationLat,
         "destination_lon": this.destinationLng,
         "guess_lat": this.guessLat,
         "guess_lon": this.guessLng
       };
 
-      this.sendScore.setScore(info);
+      this.sendScore.setScore(info); //calls send-score.service.ts
 
       this.router.navigate(['/score']);
     } else {

@@ -5,7 +5,7 @@ body{
     height: 100%;
 }
 
-.content{
+.content{ /*TrickyMaps heading*/
     position: fixed;
     top: 0;
     color: #f1f1f1;
@@ -18,7 +18,7 @@ h1{
     text-align: center;
 }
 
-.fade-in{
+.fade-in{ /*Fade in of TrickyMaps*/
     animation: FadeIn 5s;
 }
 
@@ -31,21 +31,21 @@ h1{
     }
 }
 
-.fixed-bottom{
+.fixed-bottom{ /*div for buttons on bottom*/
     position: fixed;
     bottom: 5%;
     display: flex;
     justify-content: center;
 }
 
-.btn{
+.btn{ /*button*/
     width: 15%;
     font-size: 20px;
     margin-right: 35px;
     margin-left: 35px;
 }
 
-.wrapper{
+.wrapper{ /*contains video*/
     position: absolute;
     width: 100%;
     height: 100%;

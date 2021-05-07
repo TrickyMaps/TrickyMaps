@@ -22,6 +22,8 @@ export class ScoreComponent implements OnInit {
   ngOnInit(): void {
     this.theRetrievedData = JSON.stringify(this.sendScore.getScore());
     console.log("the lat = " + this.theRetrievedData);
+
+    //sending values from gameplay.component.ts over using send-score.service.ts and extracting the number value
     this.theRetrievedData = this.theRetrievedData.toString().split('"destination_lat":');
     this.theRetrievedData = this.theRetrievedData.toString().split('"destination_lon":');
     this.theRetrievedData = this.theRetrievedData.toString().split('"guess_lat":');
@@ -33,14 +35,14 @@ export class ScoreComponent implements OnInit {
     console.log("simp = " + this.theRetrievedData[5]);
     console.log("simp = " + this.theRetrievedData[7]);
 
-    var info: any = {
+    var info: any = { //data sent for second api call
       "destination_lat": Number(this.theRetrievedData[1]),
       "destination_lon": Number(this.theRetrievedData[3]),
       "guess_lat": Number(this.theRetrievedData[5]),
       "guess_lon": Number(this.theRetrievedData[7])
     };
-    //console.log("info = " + info);
 
+    //second api call
     const Url = "http://68.14.109.119:5800/api/get_score";
       var otherParam = {
         headers: {
@@ -53,10 +55,8 @@ export class ScoreComponent implements OnInit {
       console.log(otherParam)
 
       fetch(Url, otherParam)
-        //.then(res => {this.sendJson.setData(res)})
         .then(res => { return res.json() })
         .then(data => this.setScore(data))
-        //.then(data => {this.sendJson.setData(data)})
         .catch(error => { console.log(error); })
 
         setTimeout(()=>{     
@@ -65,6 +65,7 @@ export class ScoreComponent implements OnInit {
         }, 2000);
 
         setTimeout(()=>{
+          //reformatting output to print it correctly
           this.output = this.output.toString().split('{"feet_from_destination":');
           this.output = this.output.toString().split(',"score":');
           this.output = this.output.toString().split('}');
@@ -73,8 +74,6 @@ export class ScoreComponent implements OnInit {
           this.outputFeet = this.output[1];
           console.log("output = " + this.output);
         }, 2500);
-        
-      
   }
 
   HomePage(){

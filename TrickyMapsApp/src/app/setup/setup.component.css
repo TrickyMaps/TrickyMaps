@@ -1,4 +1,4 @@
-.fixed-top{
+.fixed-top{ /*contains form*/
     top: 3%;
     position: fixed;
     width: 30%;
@@ -6,7 +6,7 @@
     background-color: white;
 }
 
-.fixed-bottom{
+.fixed-bottom{ /*buttons*/
     position: fixed;
     bottom: 5%;
     display: flex;
@@ -18,7 +18,7 @@ h2{
     padding-left: 10px;
 }
 
-input[type=radio]{
+input[type=radio]{ /*radio buttons*/
     margin-right: 10px;
     margin-left: 10px;
 }
@@ -38,14 +38,15 @@ input[type=radio]{
     margin-right: 40px;
 }
 
-.form-group{
+.form-group{ /*space between each question*/
     margin-bottom: 20px;
 }
 
-output{
+output{ /*FPS font size*/
     font-size: 24px;
 }
 
+/*set of pictures*/
 .cb-slideshow li:nth-child(1) span { 
     background-image: url('../../assets/route.jpg');
 }
@@ -60,12 +61,13 @@ output{
     background-image: url('../../assets/route5.jpg'); 
 }
 
+/*have to put this here to get rid of bullet points*/
 ul{
     list-style-type: none;
 }
 
 
-/*Spinner CSS*/
+/*Loading icon CSS*/
 
 .lds-roller {
     position: fixed;
@@ -153,6 +155,8 @@ ul{
     }
   }
 
+
+
 @media(min-height: 1000px) and (min-width: 700px){ /*ipad*/
     .fixed-top{
         width: 100%;
@@ -221,7 +225,7 @@ ul{
     }
 }
 
-.mySlides {
+.mySlides { /*images*/
     display:none;
     width: 100%;
     height: 100%;
@@ -233,7 +237,7 @@ ul{
     background-repeat: none;
 }
 
-#fader{
+#fader{ /*FPS*/
     width: 60%;
 }
 

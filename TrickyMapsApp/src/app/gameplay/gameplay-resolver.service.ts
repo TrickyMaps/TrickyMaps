@@ -16,10 +16,10 @@ export class GameplayResolverService implements Resolve<JSON>{
     Observable<JSON> | Promise<JSON> | JSON {
     
     this.theData = this.sendJson.getData();
-    //var send = JSON.stringify(this.theData);
-    //var jsonSend = JSON.parse(send);
+
     console.log("theData = " + JSON.stringify(this.theData));
  
+    /*API call to get video (does this from the set up page, then loads to the gameplay page*/
     const promise: Promise<JSON> = new Promise((resolve, reject) => {
       const Url = "http://68.14.109.119:5800/api/get_video";
       var otherParam = {

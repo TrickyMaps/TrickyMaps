@@ -4,16 +4,16 @@ h1{
     margin-bottom: 15px;
 }
 
-a{
+a{ /*left and right arrow key to swtich to next slide*/
     height: 40%;
     margin: auto;
 }
 
-.carousel-caption d-md-block{
-    width: 80%;
+.carousel-caption d-md-block{ /*caption for each slide*/
+    width: 80%; 
 }
 
-.exit{
+.exit{ /*exit button*/
     margin-left: 10px;
     margin-top: 10px;
     color: white;
@@ -31,7 +31,7 @@ a{
 .carousel-item{
     height: 100vh;
 }
-img{
+img{ /*images in each slide*/
     margin: auto;
     height: auto;
     width: 80%;

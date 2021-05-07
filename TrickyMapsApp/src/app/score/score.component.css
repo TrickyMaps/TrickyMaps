@@ -1,15 +1,15 @@
-.flex-container {
+.flex-container { 
     display: flex;
 }
 
-.flex-child {
+.flex-child { /*game over box*/
     flex: 1;
     border: 2px solid white;
     margin: 20px 120px 0 120px;
     height: 60vh;
 }  
 
-.fixed-bottom{
+.fixed-bottom{ /*where button is*/
     position: fixed;
     bottom: 5%;
     display: flex;
@@ -61,7 +61,6 @@ h2{
         margin-bottom: 15px;
         font-size: 10px;
     }  
-
 }
 
 /*Both Ipads*/
